@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chambers and Online Clinic | Dr. Rashed Anwar Khan – Psychiatrist</title>
+  <meta name="description" content="Visit Dr. Rashed Anwar Khan in Gulshan or Bashundhara, or book a secure video consultation. See timetables, fees, directions, maps and what to bring.">
+  <meta name="theme-color" content="#CCFF00">
+  <meta property="og:type" content="website"><meta property="og:title" content="Chambers and Online Clinic"><meta property="og:description" content="Visit Dr. Rashed Anwar Khan in Gulshan or Bashundhara, or book a secure video consultation. See timetables, fees, directions, maps and what to bring.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="js/tailwind-config.js"></script>
+  <script defer src="js/site.js"></script><script defer src="js/ui.js"></script><script defer src="js/fx.js"></script><script defer src="js/layout.js"></script>
+  <script defer src="js/data/chambers.js"></script>
+  <script defer src="js/pages/chambers.js"></script>
+</head>
+<body data-page="chambers" class="bg-concrete font-sans text-ink antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:border-4 focus:border-ink focus:bg-lime focus:px-5 focus:py-2 focus:font-mono focus:text-sm focus:font-bold focus:uppercase">Skip to main content</a>
+  <div id="site-header"></div>
+  <main id="main" tabindex="-1">
+    <div id="hero-mount"></div>
+    <div id="overview-mount"></div>
+    <div id="matrix-mount"></div>
+    <div id="details-mount"></div>
+    <div id="compare-mount"></div>
+
+    <section id="bring" data-section="bring" data-component="BringChecklist" class="relative overflow-x-clip border-b-4 border-ink bg-concrete py-16 text-ink md:py-28">
+      <div aria-hidden="true" data-parallax="0.25" data-parallax-rotate="-20" class="pointer-events-none absolute -left-8 top-16 hidden w-40 md:block"><img src="assets/img/obj-star.svg" alt="" aria-hidden="true" width="400" height="400" class="w-full" loading="lazy" decoding="async"></div>
+      <div class="mx-auto w-full max-w-[90rem] px-4 sm:px-8">
+        <div class="grid gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-5">
+            <div data-reveal="cut" class="flex flex-wrap items-center gap-3"><span class="border-4 border-ink bg-lime px-3 py-1 font-mono text-sm font-black">&sect;07</span><span class="font-mono text-xs font-bold uppercase tracking-[0.14em]">Before your first visit</span></div>
+            <h2 data-reveal="slam" class="mt-5 font-display text-[clamp(2.25rem,7vw,6rem)] font-black uppercase leading-[0.9] tracking-tighter [font-variation-settings:'wdth'_125] [&_em]:bg-ink [&_em]:px-2 [&_em]:text-lime [&_em]:not-italic">What to <em>bring</em></h2>
+            <p data-reveal="cut" data-delay="150" class="mt-6 max-w-md text-lg leading-relaxed">You do not need to prepare much. A few papers and a few notes help the doctor understand you quickly, so the visit is spent talking, not searching for records. Tick items as you pack them.</p>
+            <p id="bring-count" role="status" aria-live="polite" class="mt-6 inline-block border-4 border-ink bg-white px-4 py-2 font-mono text-sm font-black uppercase shadow-hard-sm">0 ticked</p>
+          </div>
+          <ul data-reveal="right" class="space-y-4 lg:col-span-7">
+            <li><label class="flex cursor-pointer items-start gap-4 border-4 border-ink bg-white p-4 shadow-hard-sm"><input type="checkbox" data-bring class="peer mt-0.5 h-6 w-6 shrink-0 appearance-none border-4 border-ink bg-white checked:bg-lime focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ultra"><span class="peer-checked:line-through"><b class="block font-display uppercase">Your medicines</b>The strips, boxes or bottles you take now, including vitamins and herbal products.</span></label></li>
+            <li><label class="flex cursor-pointer items-start gap-4 border-4 border-ink bg-white p-4 shadow-hard-sm"><input type="checkbox" data-bring class="peer mt-0.5 h-6 w-6 shrink-0 appearance-none border-4 border-ink bg-white checked:bg-lime focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ultra"><span class="peer-checked:line-through"><b class="block font-display uppercase">Earlier prescriptions</b>Papers from any doctor who has treated your mood, sleep, anxiety or behaviour before.</span></label></li>
+            <li><label class="flex cursor-pointer items-start gap-4 border-4 border-ink bg-white p-4 shadow-hard-sm"><input type="checkbox" data-bring class="peer mt-0.5 h-6 w-6 shrink-0 appearance-none border-4 border-ink bg-white checked:bg-lime focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ultra"><span class="peer-checked:line-through"><b class="block font-display uppercase">Test reports and scans</b>Blood tests, thyroid results, ECG or brain scans from the last year, if you have them.</span></label></li>
+            <li><label class="flex cursor-pointer items-start gap-4 border-4 border-ink bg-white p-4 shadow-hard-sm"><input type="checkbox" data-bring class="peer mt-0.5 h-6 w-6 shrink-0 appearance-none border-4 border-ink bg-white checked:bg-lime focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ultra"><span class="peer-checked:line-through"><b class="block font-display uppercase">A short note of what has changed</b>When it started, what makes it better or worse, and how sleep and appetite have been.</span></label></li>
+            <li><label class="flex cursor-pointer items-start gap-4 border-4 border-ink bg-white p-4 shadow-hard-sm"><input type="checkbox" data-bring class="peer mt-0.5 h-6 w-6 shrink-0 appearance-none border-4 border-ink bg-white checked:bg-lime focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ultra"><span class="peer-checked:line-through"><b class="block font-display uppercase">Your questions</b>Write down the three things you most want answered. People often forget them in the room.</span></label></li>
+            <li><label class="flex cursor-pointer items-start gap-4 border-4 border-ink bg-white p-4 shadow-hard-sm"><input type="checkbox" data-bring class="peer mt-0.5 h-6 w-6 shrink-0 appearance-none border-4 border-ink bg-white checked:bg-lime focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ultra"><span class="peer-checked:line-through"><b class="block font-display uppercase">A parent or guardian, for under-18s</b>Bring a birth certificate or school ID. Someone you trust is also welcome at any age.</span></label></li>
+            <li><label class="flex cursor-pointer items-start gap-4 border-4 border-ink bg-white p-4 shadow-hard-sm"><input type="checkbox" data-bring class="peer mt-0.5 h-6 w-6 shrink-0 appearance-none border-4 border-ink bg-white checked:bg-lime focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ultra"><span class="peer-checked:line-through"><b class="block font-display uppercase">Payment method</b>Cash, bKash, Nagad or a card, paid at the chamber after your visit. Nothing is taken online.</span></label></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" data-section="privacy" data-component="PrivacyPromise" class="relative overflow-x-clip border-b-4 border-ink bg-ultra py-16 text-white md:py-28">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-grad-bands opacity-20 [background-size:300%_100%] motion-safe:animate-gradient-shift" data-bg-shift></div>
+      <div class="relative mx-auto w-full max-w-[90rem] px-4 sm:px-8">
+        <div data-reveal="cut" class="flex flex-wrap items-center gap-3"><span class="border-4 border-ink bg-lime px-3 py-1 font-mono text-sm font-black text-ink">&sect;08</span><span class="font-mono text-xs font-bold uppercase tracking-[0.14em]">Our promise</span></div>
+        <h2 data-reveal="slam" class="mt-5 max-w-4xl font-display text-[clamp(2.25rem,7vw,6rem)] font-black uppercase leading-[0.9] tracking-tighter [font-variation-settings:'wdth'_125] [&_em]:bg-lime [&_em]:px-2 [&_em]:text-ink [&_em]:not-italic">What you say <em>stays here</em></h2>
+        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div data-reveal="stamp" class="border-4 border-ink bg-white p-6 text-ink shadow-hard-lime"><p class="font-display text-6xl font-black leading-none">01</p><h3 class="mt-4 font-display text-xl font-black uppercase">A private file</h3><p class="mt-3 text-sm leading-relaxed">Your records are kept in a locked cabinet or a password-protected system. Only the doctor and the desk staff who need them can open your file.</p></div>
+          <div data-reveal="stamp" data-delay="120" class="border-4 border-ink bg-white p-6 text-ink shadow-hard-lime"><p class="font-display text-6xl font-black leading-none">02</p><h3 class="mt-4 font-display text-xl font-black uppercase">No recordings</h3><p class="mt-3 text-sm leading-relaxed">Sessions are never recorded, in the chamber or online. The waiting areas have no cameras pointed at the consultation corridor.</p></div>
+          <div data-reveal="stamp" data-delay="240" class="border-4 border-ink bg-white p-6 text-ink shadow-hard-lime"><p class="font-display text-6xl font-black leading-none">03</p><h3 class="mt-4 font-display text-xl font-black uppercase">You decide who knows</h3><p class="mt-3 text-sm leading-relaxed">Family, employers and schools hear nothing without your consent. For children and teenagers, the doctor explains clearly what parents will be told.</p></div>
+          <div data-reveal="stamp" data-delay="360" class="border-4 border-ink bg-white p-6 text-ink shadow-hard-lime"><p class="font-display text-6xl font-black leading-none">04</p><h3 class="mt-4 font-display text-xl font-black uppercase">One honest exception</h3><p class="mt-3 text-sm leading-relaxed">If there is a serious risk to someone&rsquo;s safety, the doctor may need to involve others. He tells you this at the start, so you always know where you stand.</p></div>
+        </div>
+        <p data-reveal="cut" class="mt-12 flex max-w-3xl items-start gap-4 border-4 border-ink bg-lime p-5 font-medium text-ink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="mt-0.5 h-6 w-6 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="7" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>If you or someone near you is in immediate danger, call 999 or go to the nearest hospital emergency department. Please do not wait for an appointment.</span></p>
+      </div>
+    </section>
+
+    <div id="cta-mount"></div>
+  </main>
+  <div id="site-footer"></div>
+</body>
+</html>

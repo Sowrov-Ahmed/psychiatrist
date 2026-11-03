@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book an Appointment in Five Steps | Dr. Rashed Anwar Khan – Psychiatrist</title>
+  <meta name="description" content="Book a psychiatry appointment with Dr. Rashed Anwar Khan in Gulshan, Bashundhara or online. Pick a service, chamber, day and time in about three minutes.">
+  <meta name="theme-color" content="#CCFF00">
+  <meta property="og:type" content="website"><meta property="og:title" content="Book an Appointment in Five Steps"><meta property="og:description" content="Book a psychiatry appointment with Dr. Rashed Anwar Khan in Gulshan, Bashundhara or online. Pick a service, chamber, day and time in about three minutes.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="js/tailwind-config.js"></script>
+  <script defer src="js/site.js"></script><script defer src="js/ui.js"></script><script defer src="js/fx.js"></script><script defer src="js/layout.js"></script>
+  <script defer src="js/pages/appointment.js"></script>
+</head>
+<body data-page="appointment" class="bg-concrete font-sans text-ink antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:border-4 focus:border-ink focus:bg-lime focus:px-5 focus:py-2 focus:font-mono focus:text-sm focus:font-bold focus:uppercase">Skip to main content</a>
+  <div id="site-header"></div>
+  <main id="main" tabindex="-1">
+    <div id="hero-mount"></div>
+
+    <section id="booking" data-section="booking" class="relative overflow-x-clip border-b-4 border-ink bg-white py-12 text-ink md:py-20">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-halftone opacity-10 [background-size:14px_14px]"></div>
+      <div class="relative mx-auto w-full max-w-[90rem] px-4 sm:px-8">
+        <h2 class="sr-only">Book your appointment</h2>
+        <div id="booking-grid" class="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_24rem]">
+          <div class="min-w-0">
+            <div id="summary-mobile-mount"></div>
+            <div id="wizard-mount"></div>
+          </div>
+          <div id="summary-mount"></div>
+        </div>
+      </div>
+    </section>
+
+    <div id="after-mount"></div>
+
+    <section id="emergency" data-section="emergency" class="relative overflow-x-clip border-b-4 border-ink bg-lime py-12 text-ink md:py-20">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-grid-ink [background-size:64px_64px]"></div>
+      <div class="relative mx-auto w-full max-w-[90rem] px-4 sm:px-8">
+        <div class="grid items-center gap-8 lg:grid-cols-[1.3fr_1fr]">
+          <div data-reveal="slam">
+            <p class="inline-block border-4 border-ink bg-white px-3 py-1 font-mono text-xs font-black uppercase tracking-widest">Please read</p>
+            <h2 class="mt-5 font-display text-[clamp(2.25rem,7vw,6rem)] font-black uppercase leading-[0.9] tracking-tighter [font-variation-settings:'wdth'_125] [&_em]:bg-ink [&_em]:px-2 [&_em]:text-lime [&_em]:not-italic">Not for <em>emergencies</em></h2>
+          </div>
+          <div data-reveal="cut" data-delay="200">
+            <p class="text-lg leading-relaxed">This booking form is for planned visits. If you or someone near you is in immediate danger, or is thinking about ending their life, do not wait for an appointment. Call 999 now, or go to the nearest hospital emergency department and stay with the person until help arrives.</p>
+            <a href="tel:999" class="mt-6 inline-flex items-center gap-3 border-4 border-ink bg-ink px-6 py-3.5 font-mono text-sm font-bold uppercase tracking-wider text-white shadow-hard-ultra transition-all duration-150 hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0.5 active:translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ultra">Call 999 now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QA Runner | Dr. Rashed Anwar Khan – developer tool</title>
+  <meta name="description" content="Developer tool: opens every page at mobile and desktop width, runs the automated quality checks and lists failures.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="js/tailwind-config.js"></script>
+</head>
+<body class="bg-concrete font-sans text-ink antialiased">
+<main class="mx-auto max-w-6xl p-4 sm:p-8">
+  <h1 class="border-4 border-ink bg-lime p-4 font-display text-4xl font-black uppercase tracking-tighter shadow-hard">QA Runner</h1>
+  <p class="mt-4 max-w-3xl">Opens each page inside a frame at <b>390 px</b> and <b>1280 px</b>, scrolls it, clicks every tab / accordion / carousel / filter, submits forms empty, and checks structure, text, images, links, accessibility, layout overflow and the Brutalist design rules. Keep this tab open until the bar reaches 100%. Open this file from the project root (same folder as <code>index.html</code>).</p>
+  <div class="mt-6 flex flex-wrap items-center gap-3">
+    <button id="run" class="border-4 border-ink bg-ink px-5 py-3 font-mono text-sm font-bold uppercase text-lime shadow-hard-sm">Run quick check</button>
+    <button id="run-all" class="border-4 border-ink bg-white px-5 py-3 font-mono text-sm font-bold uppercase shadow-hard-sm">Run every variant</button>
+    <button id="copy" class="border-4 border-ink bg-white px-5 py-3 font-mono text-sm font-bold uppercase shadow-hard-sm">Copy report</button>
+    <span id="summary" class="font-mono text-sm font-bold" role="status" aria-live="polite"></span>
+  </div>
+  <div class="mt-4 h-4 border-4 border-ink bg-white"><div id="bar" class="h-full w-0 bg-ultra"></div></div>
+  <div id="results" class="mt-6 space-y-3"></div>
+  <iframe id="frame" title="Page under test" class="mt-8 hidden h-[600px] w-[390px] border-4 border-ink bg-white"></iframe>
+</main>
+<script>
+(function () {
+  'use strict';
+  var QUICK = ['index.html', 'about.html', 'services.html', 'service-details.html?slug=depression-anxiety', 'service-details.html?slug=zz-not-found', 'chambers.html', 'appointment.html', 'blog.html', 'blog-details.html?slug=stress-or-depression-warning-signs', 'blog-details.html?slug=zz-not-found', 'testimonials.html', 'contact.html', 'faqs.html', 'signin.html', '404.html'];
+  var SERVICES = ['depression-anxiety', 'ocd-trauma', 'bipolar-psychosis', 'adhd-neurodevelopment', 'child-adolescent', 'sleep-insomnia', 'addiction-recovery', 'psychotherapy-cbt'];
+  var POSTS = ['stress-or-depression-warning-signs', 'how-to-support-someone-with-anxiety', 'antidepressants-myths-and-facts', 'insomnia-why-you-cant-sleep', 'exam-pressure-teen-mental-health', 'ocd-is-not-about-being-neat', 'mental-health-stigma-in-bangladesh', 'when-to-seek-emergency-psychiatric-help'];
+  var FULL = QUICK.slice(0, 3).concat(SERVICES.map(function (s) { return 'service-details.html?slug=' + s; }), ['service-details.html?slug=zz-not-found', 'chambers.html#gulshan', 'chambers.html#online', 'appointment.html', 'appointment.html?service=depression-anxiety&chamber=gulshan&type=new', 'appointment.html?chamber=online&type=follow-up', 'blog.html', 'blog.html?category=sleep', 'blog.html?q=anxiety&page=1'], POSTS.map(function (s) { return 'blog-details.html?slug=' + s; }), ['blog-details.html?slug=zz-not-found', 'testimonials.html', 'contact.html', 'faqs.html', 'faqs.html#general', 'signin.html', '404.html']);
+  var WIDTHS = [390, 1280], frame = document.getElementById('frame'), out = document.getElementById('results'), bar = document.getElementById('bar'), sum = document.getElementById('summary'), reports = [], busy = false;
+  function qa(u) { var i = u.indexOf('#'), h = i > -1 ? u.slice(i) : '', b = i > -1 ? u.slice(0, i) : u; return b + (b.indexOf('?') > -1 ? '&' : '?') + 'qa=1' + h; }
+  function once(url, width) {
+    return new Promise(function (resolve) {
+      var done = false, to = setTimeout(function () { fin({ page: url, url: url, width: width, findings: [{ level: 'FAIL', rule: 'TIMEOUT', msg: 'no QA report in 40 s — page crashed, script missing, or file not found' }], stats: {} }); }, 40000);
+      function fin(r) { if (done) return; done = true; clearTimeout(to); window.removeEventListener('message', onm); resolve(r); }
+      function onm(e) { if (e.data && e.data.source === 'qa') fin(e.data.report); }
+      window.addEventListener('message', onm); frame.style.width = width + 'px'; frame.src = 'about:blank'; setTimeout(function () { frame.src = qa(url); }, 60);
+    });
+  }
+  function render() {
+    out.innerHTML = reports.map(function (r) {
+      var f = r.report.findings.filter(function (x) { return x.level === 'FAIL'; }), w = r.report.findings.length - f.length;
+      return '<details class="border-4 border-ink bg-white shadow-hard-sm"' + (f.length ? ' open' : '') + '><summary class="flex cursor-pointer flex-wrap items-center gap-3 p-3 font-mono text-sm font-bold ' + (f.length ? 'bg-alert text-white' : 'bg-lime') + '"><span>' + (f.length ? '✗' : '✓') + '</span><span class="min-w-0 flex-1 break-all">' + esc(r.url) + '</span><span>' + r.width + 'px</span><span>' + f.length + ' fail</span><span>' + w + ' warn</span></summary><ul class="space-y-1 p-3 font-mono text-xs">' + (r.report.findings.length ? r.report.findings.map(function (x) { return '<li class="' + (x.level === 'FAIL' ? 'bg-alert/10' : 'bg-lime/40') + ' p-1"><b>' + x.level + ' ' + esc(x.rule) + '</b> ' + esc(x.msg) + '</li>'; }).join('') : '<li>No findings.</li>') + '</ul></details>';
+    }).join('');
+    var fails = reports.reduce(function (a, r) { return a + r.report.findings.filter(function (x) { return x.level === 'FAIL'; }).length; }, 0), warns = reports.reduce(function (a, r) { return a + r.report.findings.filter(function (x) { return x.level === 'WARN'; }).length; }, 0);
+    sum.textContent = reports.length + ' checks · ' + fails + ' FAIL · ' + warns + ' WARN' + (busy ? ' · running…' : fails ? ' · NOT READY' : ' · ALL CLEAR');
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  async function go(list) {
+    if (busy) return; busy = true; reports = []; frame.classList.remove('hidden'); var total = list.length * WIDTHS.length, n = 0;
+    for (var i = 0; i < list.length; i++) for (var j = 0; j < WIDTHS.length; j++) { var rep = await once(list[i], WIDTHS[j]); rep.width = WIDTHS[j]; reports.push({ url: list[i], width: WIDTHS[j], report: rep }); n++; bar.style.width = (n / total * 100) + '%'; render(); }
+    busy = false; frame.src = 'about:blank'; frame.classList.add('hidden'); render();
+  }
+  document.getElementById('run').addEventListener('click', function () { go(QUICK); });
+  document.getElementById('run-all').addEventListener('click', function () { go(FULL); });
+  document.getElementById('copy').addEventListener('click', function () { var t = reports.map(function (r) { return r.url + ' @' + r.width + '\n' + r.report.findings.map(function (x) { return '  ' + x.level + ' ' + x.rule + ': ' + x.msg; }).join('\n'); }).join('\n\n'); if (navigator.clipboard) navigator.clipboard.writeText(t); sum.textContent += ' · report copied'; });
+})();
+</script>
+</body>
+</html>
